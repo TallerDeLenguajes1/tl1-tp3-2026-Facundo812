@@ -5,7 +5,9 @@
 //FUNCIONES
 void MostrarPersonas(char *V[]);
 
-int BuscarNombre(char *V[], char palabra[]);
+int BuscarNombrePorPalabra(char *V[], char palabra[]);
+
+void BuscarNombrePorId(char *V[], int id);
 
 //MAIN
 void main(){
@@ -19,10 +21,11 @@ void main(){
         longitud = strlen(nombre);
 
         V[i] = (char *)malloc((longitud + 1) * sizeof(char));
+        V[i] = (char *)malloc((longitud + 1) * sizeof(char));
         strcpy(V[i],nombre);
-        //puts(V[i]);
     }
     MostrarPersonas(V);
+
     
     //liberar memoria
     for(i=0;i<5;i++){
@@ -39,7 +42,7 @@ void MostrarPersonas(char *V[]){
     }
 }
 
-int BuscarNombre(char *V[], char palabra[]){
+int BuscarNombrePorPalabra(char *V[], char palabra[]){
     int i;
     for(i=0;i<5;i++){
         if (strstr(V[i],palabra) != NULL){
@@ -47,4 +50,14 @@ int BuscarNombre(char *V[], char palabra[]){
         }
     }
     return(-1);
+}
+
+void BuscarNombrePorId(char *V[], int id){
+    if (id > 4 || id < 0){
+        printf("\n----no se encontro el valor buscado----\n");
+    }
+    else{
+        printf("\nNombre ubicado en la posicion %d: ",id);
+        puts(V[id]);
+    }
 }
