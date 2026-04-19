@@ -5,6 +5,8 @@
 //FUNCIONES
 void MostrarPersonas(char *V[]);
 
+int BuscarNombre(char *V[], char palabra[]);
+
 //MAIN
 void main(){
     char nombre[20];
@@ -16,13 +18,12 @@ void main(){
         gets(nombre);
         longitud = strlen(nombre);
 
-        V[i] = (char *)malloc(longitud * sizeof(char));
+        V[i] = (char *)malloc((longitud + 1) * sizeof(char));
         strcpy(V[i],nombre);
         //puts(V[i]);
     }
     MostrarPersonas(V);
     
-
     //liberar memoria
     for(i=0;i<5;i++){
         free(V[i]);
@@ -36,4 +37,14 @@ void MostrarPersonas(char *V[]){
         printf("Persona numero %d: ",i+1);
         puts(V[i]);
     }
+}
+
+int BuscarNombre(char *V[], char palabra[]){
+    int i;
+    for(i=0;i<5;i++){
+        if (strstr(V[i],palabra) != NULL){
+            return (i);
+        }
+    }
+    return(-1);
 }
