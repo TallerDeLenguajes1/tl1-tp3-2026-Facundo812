@@ -26,6 +26,34 @@ void main(){
     }
     MostrarPersonas(V);
 
+    int opcionElegida;
+    printf("\n\n----SELECCION----\n");
+    printf("Opcion 1: Buscar por ID (ingrese 1)\nOpcion 2:Buscar por Palabra (ingrese 2)\nSeleccione una Opcion: ");
+    scanf("%d",&opcionElegida);
+    fflush(stdin);
+        if(opcionElegida == 1){
+            int id;
+            printf("\nIngrese un ID (numero de 0 a 4): ");
+            scanf("%d",&id);
+            BuscarNombrePorId(V,id);
+        }
+        else if(opcionElegida == 2){
+            char palabra[20];
+            printf("\nIngrese la palabra buscada: ");
+            gets(palabra);
+                int resultado = BuscarNombrePorPalabra(V,palabra);
+            
+                if(resultado == -1){
+                    printf("\n----No se encontro----");
+                }
+                else{
+                    printf("\nResultado: ");
+                    puts(V[resultado]);
+                }
+        }
+        else{
+            printf("\n----No se eligio ninguna opcion----");
+        }
     
     //liberar memoria
     for(i=0;i<5;i++){
