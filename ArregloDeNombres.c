@@ -21,7 +21,6 @@ void main(){
         longitud = strlen(nombre);
 
         V[i] = (char *)malloc((longitud + 1) * sizeof(char));
-        V[i] = (char *)malloc((longitud + 1) * sizeof(char));
         strcpy(V[i],nombre);
     }
     MostrarPersonas(V);
